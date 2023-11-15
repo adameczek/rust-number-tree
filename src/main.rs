@@ -1,8 +1,12 @@
-pub mod Node;
+pub mod components;
+pub mod graphics;
+pub mod numbernode;
 
 use bevy::{prelude::*, window::PrimaryWindow};
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
-use Node::NodePlugin;
+use components::NumberNode;
+use graphics::GraphicsPlugin;
+use numbernode::NodePlugin;
 
 pub const CLEAR: Color = Color::rgb(0.1, 0.1, 0.1);
 
@@ -18,8 +22,10 @@ fn main() {
             }),
             ..default()
         }))
+        .register_type::<NumberNode>()
         .add_systems(Startup, setup)
         .add_plugins(NodePlugin)
+        .add_plugins(GraphicsPlugin)
         .add_plugins(WorldInspectorPlugin::new()) // adds default options and `InspectorEguiImpl`s
         .run();
 }
