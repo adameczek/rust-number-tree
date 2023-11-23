@@ -1,6 +1,7 @@
 pub mod components;
 pub mod graphics;
 pub mod numbernode;
+mod cursor;
 
 use bevy::{prelude::*, window::PrimaryWindow};
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
